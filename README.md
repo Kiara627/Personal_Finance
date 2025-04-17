@@ -27,12 +27,13 @@ A data-driven Python tool that analyzes financial behavior, forecasts future sav
 5. **Presents results** via clean plots and performance metrics.
 
 ## 📈 Output 
-📊 Monthly Income, Expenses, and Savings
+
 ![image](https://github.com/user-attachments/assets/5d5361a3-4ed2-4c90-9023-a4ef5dcb5ac6)
-🔮 Savings Forecast (ARIMA)
+
 ![image](https://github.com/user-attachments/assets/73d17eb8-8093-4e6e-bd16-06364aa36695)
-📌 K-Means Clustering of Expenses by Category
+
 ![image](https://github.com/user-attachments/assets/45b6df9b-cbe1-41de-9e3e-8b85c92c7098)
+
 ### 💬 Terminal Output Example
 
 ```bash
