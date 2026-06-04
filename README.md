@@ -1,47 +1,95 @@
-# 💰 Personal Finance Analyzer
+# Personal Finance Analytics Platform
 
-A data-driven Python tool that analyzes financial behavior, forecasts future savings, and uncovers spending patterns using machine learning and time series techniques.
+A financial analytics data product that ingests personal transaction data, forecasts future savings using time-series and regression models, and segments spending behavior through unsupervised learning. Built to demonstrate the kind of spend analysis, budget forecasting, and customer segmentation pipelines core to fintech data science.
 
-## 📌 Features
+---
 
-- 📊 **Monthly Financial Summary**: Calculates income, expenses, and savings month-over-month.
-- 🔮 **Savings Forecasting**: Predicts future savings using ARIMA and Linear Regression models.
-- 📉 **Spending Pattern Analysis**: Identifies spending behavior through K-Means clustering.
-- 📈 **Visual Insights**: Generates intuitive visualizations for trends and category-wise expenses.
+## Business Use Case
 
-## 🧠 Technologies Used
+Modern fintech platforms — from expense management tools to consumer banking apps — rely on the same core analytical primitives this project implements:
 
-- **Pandas, NumPy** – Data manipulation and analysis  
-- **Matplotlib** – Visualizations  
-- **scikit-learn** – Linear Regression, K-Means Clustering  
-- **Statsmodels** – ARIMA time series forecasting  
-- **StandardScaler, Train-Test Split** – Data preprocessing  
-- **Jupyter Notebook** – Interactive analysis and visualization  
+- **Spend Analysis**: Categorize and rank expense categories to surface where money is going, enabling budget recommendations and anomaly detection.
+- **Budget Forecasting**: Predict future savings trajectories using time-series models (ARIMA) and regression baselines, powering features like "on track to save X by month Y."
+- **Customer Segmentation**: Cluster users by spending behavior (K-Means) to drive personalized product recommendations, credit risk tiering, and targeted financial wellness nudges.
 
-## 🚀 How It Works
+---
 
-1. **Ingests personal finance data** from a CSV file.
-2. **Cleans and organizes** it into income and expenses by month.
-3. **Calculates savings**, visualizes trends, and forecasts future values.
-4. **Performs clustering** to reveal dominant expense categories.
-5. **Presents results** via clean plots and performance metrics.
+## Key Results
 
-## 📈 Output 
+| Metric | Value |
+|---|---|
+| Model | Linear Regression on monthly savings |
+| RMSE | **52.91** |
+| R² Score | **0.89** |
+| ARIMA Forecast Horizon | 3 months |
+| Clustering Algorithm | K-Means (k=3) |
 
-![image](https://github.com/user-attachments/assets/5d5361a3-4ed2-4c90-9023-a4ef5dcb5ac6)
+The model explains **89% of variance** in monthly savings with a prediction error of roughly **$52.91** — a strong signal for a small personal dataset.
 
-![image](https://github.com/user-attachments/assets/73d17eb8-8093-4e6e-bd16-06364aa36695)
+---
 
-![image](https://github.com/user-attachments/assets/45b6df9b-cbe1-41de-9e3e-8b85c92c7098)
+## Tech Stack
 
-### 💬 Terminal Output Example
+| Layer | Tools |
+|---|---|
+| Data Manipulation | `pandas`, `numpy` |
+| Visualization | `matplotlib` |
+| Forecasting | `statsmodels` (ARIMA), `scikit-learn` (Linear Regression) |
+| Clustering | `scikit-learn` (K-Means, StandardScaler) |
+| Environment | Jupyter Notebook / Google Colab |
+
+---
+
+## Project Structure
+
+```
+Personal_Finance/
+├── PythonFinalProject_PersonalFinanceManagement.ipynb  # Main analysis notebook
+├── personal finance data.csv                           # Transaction dataset
+├── requirements.txt                                    # Python dependencies
+└── README.md
+```
+
+---
+
+## Features
+
+- **Monthly Financial Summary** — Aggregates income, expenses, and net savings month-over-month from raw transaction records.
+- **ARIMA Time-Series Forecasting** — Fits ARIMA(1,1,1) to the savings series and projects 3 months forward.
+- **Linear Regression Baseline** — Trains and evaluates a regression model on temporal features; reports RMSE and R².
+- **K-Means Spending Clusters** — Groups expense categories into 3 behavioral segments (high / medium / low spend) using standardized amounts.
+- **Visualization Suite** — Produces income/expense trend charts, category breakdowns, and ARIMA forecast plots.
+
+---
+
+## How to Run
 
 ```bash
+# 1. Install dependencies
+pip install -r requirements.txt
+
+# 2. Launch the notebook
+jupyter notebook PythonFinalProject_PersonalFinanceManagement.ipynb
+```
+
+> **Note:** The notebook was originally developed in Google Colab. If running locally, update the file path in `main()` from `/content/personal finance data.csv` to your local path.
+
+---
+
+## Output
+
+![Monthly Trends](https://github.com/user-attachments/assets/5d5361a3-4ed2-4c90-9023-a4ef5dcb5ac6)
+
+![Expense Categories](https://github.com/user-attachments/assets/73d17eb8-8093-4e6e-bd16-06364aa36695)
+
+![ARIMA Forecast](https://github.com/user-attachments/assets/45b6df9b-cbe1-41de-9e3e-8b85c92c7098)
+
+```
 ARIMA Forecast: [415.23, 435.89, 452.74]
-Mean Squared Error: 2800.54
 Root Mean Squared Error: 52.91
 R-squared Score: 0.89
 Future Savings Predictions:
-Month 1: 420.52
-Month 2: 439.28
-Month 3: 458.67
+  Month 1: 420.52
+  Month 2: 439.28
+  Month 3: 458.67
+```
