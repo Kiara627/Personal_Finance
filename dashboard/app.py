@@ -6,6 +6,7 @@ Built with Plotly Dash · Data: personal finance data.csv
 import warnings
 warnings.filterwarnings("ignore")
 
+import os
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
@@ -17,7 +18,8 @@ from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
 
 # ── Load & Preprocess ─────────────────────────────────────────────────────────
-df = pd.read_csv("../personal finance data.csv")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+df = pd.read_csv(os.path.join(BASE_DIR, "..", "personal finance data.csv"))
 df["Date"] = pd.to_datetime(df["Date / Time"], format="%d %B %Y")
 df["Month"] = df["Date"].dt.to_period("M")
 df["Category"] = df["Category"].str.strip().str.title()
@@ -379,4 +381,5 @@ app.layout = dbc.Container(
 )
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 8050))
+    app.run(host="0.0.0.0", port=port, debug=False)

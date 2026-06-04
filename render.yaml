@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: personal-finance-dashboard
+    runtime: python
+    buildCommand: pip install -r dashboard/requirements.txt
+    startCommand: python dashboard/app.py
+    envVars:
+      - key: PORT
+        value: 10000
