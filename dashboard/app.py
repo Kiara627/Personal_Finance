@@ -149,7 +149,7 @@ def category_spend_chart():
         xaxis_title="Total Expense (₹)",
         xaxis=dict(gridcolor=C["border"], zeroline=False),
         yaxis=dict(gridcolor="rgba(0,0,0,0)", zeroline=False),
-        **{k: v for k, v in CHART_LAYOUT.items() if k not in ("xaxis", "yaxis")},
+        **{k: v for k, v in CHART_LAYOUT.items() if k not in ("xaxis", "yaxis", "margin")},
         margin=dict(l=120, r=90, t=50, b=50),
     )
     return fig
