@@ -4,6 +4,14 @@ A financial analytics data product that ingests personal transaction data, forec
 
 ---
 
+## Interactive Dashboard
+
+![Personal Finance Analytics Dashboard](dashboard/screenshot.png)
+
+> Built with Plotly Dash — runs locally in under 2 minutes. See [`dashboard/README_dashboard.md`](dashboard/README_dashboard.md) for setup instructions.
+
+---
+
 ## Business Use Case
 
 Modern fintech platforms — from expense management tools to consumer banking apps — rely on the same core analytical primitives this project implements:
