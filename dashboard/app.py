@@ -92,7 +92,6 @@ CHART_LAYOUT = dict(
     plot_bgcolor=C["card"],
     paper_bgcolor=C["card"],
     font=dict(color=C["text"], family="Inter, system-ui, sans-serif"),
-    margin=dict(l=50, r=30, t=50, b=50),
     legend=dict(bgcolor="rgba(0,0,0,0)", borderwidth=0),
     xaxis=dict(gridcolor=C["border"], zeroline=False),
     yaxis=dict(gridcolor=C["border"], zeroline=False),
@@ -120,6 +119,7 @@ def monthly_trends_chart():
         xaxis_title="Month",
         yaxis_title="Amount (₹)",
         hovermode="x unified",
+        margin=dict(l=50, r=30, t=50, b=50),
         **CHART_LAYOUT,
     )
     return fig
@@ -199,6 +199,7 @@ def arima_forecast_chart():
         xaxis_title="Month",
         yaxis_title="Savings (₹)",
         hovermode="x unified",
+        margin=dict(l=50, r=30, t=50, b=50),
         **CHART_LAYOUT,
     )
     return fig
