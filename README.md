@@ -6,7 +6,7 @@ A financial analytics data product that ingests personal transaction data, forec
 
 ## Interactive Dashboard
 
-![Personal Finance Analytics Dashboard](dashboard/screenshot.png)
+![Personal Finance Analytics Dashboard](dashboard/dashboard_screenshot.png)
 
 > Built with Plotly Dash — runs locally in under 2 minutes. See [`dashboard/README_dashboard.md`](dashboard/README_dashboard.md) for setup instructions.
 
