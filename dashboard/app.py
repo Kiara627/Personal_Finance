@@ -114,12 +114,12 @@ def monthly_trends_chart():
             mode="lines+markers",
             line=dict(color=color, width=2.5),
             marker=dict(size=7, line=dict(color=C["bg"], width=1.5)),
-            hovertemplate=f"<b>{name}</b>: ₹%{{y:,.0f}}<extra></extra>",
+            hovertemplate=f"<b>{name}</b>: $%{{y:,.0f}}<extra></extra>",
         ))
     fig.update_layout(
         title=dict(text="Monthly Income, Expenses & Savings", font=dict(size=14)),
         xaxis_title="Month",
-        yaxis_title="Amount (₹)",
+        yaxis_title="Amount ($)",
         hovermode="x unified",
         margin=dict(l=50, r=30, t=50, b=50),
         **CHART_LAYOUT,
@@ -141,14 +141,14 @@ def category_spend_chart():
         y=cat.index,
         orientation="h",
         marker=dict(color=bar_colors),
-        text=[f"₹{v:,.0f}" for v in cat.values],
+        text=[f"${v:,.0f}" for v in cat.values],
         textposition="outside",
         textfont=dict(size=11, color=C["text"]),
-        hovertemplate="<b>%{y}</b>: ₹%{x:,.0f}<extra></extra>",
+        hovertemplate="<b>%{y}</b>: $%{x:,.0f}<extra></extra>",
     ))
     fig.update_layout(
         title=dict(text="Spending by Category", font=dict(size=14)),
-        xaxis_title="Total Expense (₹)",
+        xaxis_title="Total Expense ($)",
         xaxis=dict(gridcolor=C["border"], zeroline=False),
         yaxis=dict(gridcolor="rgba(0,0,0,0)", zeroline=False),
         **{k: v for k, v in CHART_LAYOUT.items() if k not in ("xaxis", "yaxis", "margin")},
@@ -167,7 +167,7 @@ def arima_forecast_chart():
         mode="lines+markers",
         line=dict(color=C["savings"], width=2.5),
         marker=dict(size=7, line=dict(color=C["bg"], width=1.5)),
-        hovertemplate="<b>Historical</b>: ₹%{y:,.0f}<extra></extra>",
+        hovertemplate="<b>Historical</b>: $%{y:,.0f}<extra></extra>",
     ))
     # Connector dotted line
     fig.add_trace(go.Scatter(
@@ -186,7 +186,7 @@ def arima_forecast_chart():
         mode="lines+markers",
         line=dict(color=C["forecast"], width=2.5, dash="dash"),
         marker=dict(size=9, symbol="diamond", line=dict(color=C["bg"], width=1.5)),
-        hovertemplate="<b>Forecast</b>: ₹%{y:,.0f}<extra></extra>",
+        hovertemplate="<b>Forecast</b>: $%{y:,.0f}<extra></extra>",
     ))
     # Forecast region shading
     fig.add_vrect(
@@ -199,7 +199,7 @@ def arima_forecast_chart():
     fig.update_layout(
         title=dict(text="ARIMA(1,1,1) Savings Forecast — Next 3 Months", font=dict(size=14)),
         xaxis_title="Month",
-        yaxis_title="Savings (₹)",
+        yaxis_title="Savings ($)",
         hovermode="x unified",
         margin=dict(l=50, r=30, t=50, b=50),
         **CHART_LAYOUT,
@@ -228,12 +228,12 @@ def kmeans_cluster_chart():
                 opacity=0.85,
                 line=dict(color=C["bg"], width=2),
             ),
-            hovertemplate="<b>%{x}</b><br>Total: ₹%{y:,.0f}<br>Segment: " + segment + "<extra></extra>",
+            hovertemplate="<b>%{x}</b><br>Total: $%{y:,.0f}<br>Segment: " + segment + "<extra></extra>",
         ))
     fig.update_layout(
         title=dict(text="K-Means Spending Segments (k=3)", font=dict(size=14)),
         xaxis_title="Expense Category",
-        yaxis_title="Total Spend (₹)",
+        yaxis_title="Total Spend ($)",
         showlegend=True,
         **CHART_LAYOUT,
         margin=dict(l=50, r=30, t=60, b=60),
@@ -309,9 +309,9 @@ app.layout = dbc.Container(
         # ── KPI Cards ────────────────────────────────────────────────────────
         dbc.Row(
             [
-                dbc.Col(kpi_card("Total Income",              f"₹{total_income:,.0f}",     C["income"],   "↑"), md=3),
-                dbc.Col(kpi_card("Total Expenses",            f"₹{total_expenses:,.0f}",   C["expense"],  "↓"), md=3),
-                dbc.Col(kpi_card("Net Savings",               f"₹{total_savings:,.0f}",    C["savings"],  "◆"), md=3),
+                dbc.Col(kpi_card("Total Income",              f"${total_income:,.0f}",     C["income"],   "↑"), md=3),
+                dbc.Col(kpi_card("Total Expenses",            f"${total_expenses:,.0f}",   C["expense"],  "↓"), md=3),
+                dbc.Col(kpi_card("Net Savings",               f"${total_savings:,.0f}",    C["savings"],  "◆"), md=3),
                 dbc.Col(kpi_card("Avg Monthly Savings Rate",  f"{avg_savings_rate:.1f}%",  C["forecast"], "◎"), md=3),
             ],
             className="g-3",
